@@ -1,0 +1,45 @@
+@import "~bootstrap/scss/bootstrap";
+body {
+    // background-color: lightgray;
+    background: #bdc3c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.list-group-item {
+    &__line {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        span {
+            font-size: 24px;
+        }
+        &__buttons {
+            display: flex;
+            .btn {
+                margin: 7px;
+            }
+        }
+    }
+}
+
+.form-check-input.custom {
+    margin-left: 15px;
+}
+
+.form-check.custom {
+    padding-left: 0;
+}
+
+form.sort-form {
+    display: flex;
+    align-content: center;
+    button {
+        height: 38px;
+        margin: 0 10px;
+    }
+}
+
+.margintop {
+    margin-top: 20px;
+}

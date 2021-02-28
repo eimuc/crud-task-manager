@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Outfits List
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1>Outfits list 👗</h1>
+					</div>
+					<div class="card-body">
+						List order by:
+
+						<form action="{{ path('outfit_index')}}" method="GET" class="sort-form	">
+							<div class="form-group">
+								<select name="master_id" class="form-control">
+									<option value="default">default</option>
+									{% for master in masters %}
+                                    <option value="{{master.id}}" {% if masterId == master.id %}selected{% endif %}>{{master.name}} {{master.surname}}</option>
+                                    {% endfor %}
+								</select>
+							</div>
+							<button type="submit" class="btn btn-dark">Filter</button>
+						</form>
+
+						<ul class="list-group">
+							{% for outfit in outfits %}
+								<li class="list-group-item">
+									<div class="list-group-item__line">
+										<span>
+                                            {{outfit.type}}
+										</span>
+										<div class="list-group-item__line__buttons">
+											<a href="{{ path('outfit_edit', {id: outfit.id}) }}" class="btn btn-success">EDIT</a>
+											<form action="{{ path('outfit_delete', {id: outfit.id}) }}" method="POST">
+												<button type="submit" class="btn btn-danger">DELETE</button>
+											</form>
+										</div>
+									</div>
+									<h4>
+										<span class="badge badge-secondary">Master</span>
+									</h4>
+									<ul class="list-group">
+
+										{% for master in masters %}
+											<li class="list-group-item">{{outfit.master.name}} {{outfit.master.surname}}</li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

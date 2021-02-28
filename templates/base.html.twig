@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{# <link href="{{ asset('css/blog.css') }}" rel="stylesheet"/> #}
+		<link href="http://localhost/fashionhouse/public/build/app.css" rel="stylesheet"/>
+		<script src="http://localhost/fashionhouse/public/build/app.js" defer></script>
+		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> {% block stylesheets %}{% endblock %}{% block javascripts %}{% endblock %}
+		</head>
+		<body>
 
-        {% block javascripts %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+			{% include 'menu.html.twig' %}
+			<main class="py-4">
+
+				{% if errors is defined and errors|length > 0 %}
+					{% include 'errors/validation.html.twig' %}
+				{% endif %}
+
+				{% block body %}{% endblock %}
+			</main>
+		</body>
+	</html>
